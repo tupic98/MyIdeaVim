@@ -1,0 +1,21 @@
+let mapleader = ","
+
+set multiple-cursors
+
+nmap ,o o<Esc>k
+nmap ,o O<Esc>j
+
+map <space> /
+
+set so=3
+
+set surround
+
+set nu
+set relativenumber
+
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+nmap ,tt :action MoveEditorToOppositeTabGroup<CR>
+namp ,nt :action SelectInProjectView<CR>
