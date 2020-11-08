@@ -1,21 +1,76 @@
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
 let mapleader = ","
-
-set multiple-cursors
-
-nmap ,o o<Esc>k
-nmap ,o O<Esc>j
-
+let g:mapleader = ","
+" Fast saving
+nmap <leader>w :w!<cr>
+nmap <leader>q :q<cr>
+" Set 3 lines to the cursor - when moving vertically using j/k
+set so=5
+" Ignore case when searching
+set ignorecase
+" When searching try to be smart about cases
+set smartcase
+" Highlight search results
+set nohls
+" Makes search act like search in modern browsers
+set incsearch
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+set tm=350
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Moving around, tabs, windows and buffers
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 map <space> /
-
-set so=3
-
-set surround
-
+map <c-space> ?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Editing mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Remap VIM 0 to first non-blank character
+map 0 ^
+" Map = to move at the first column
+nmap = g0
+"sets
 set nu
 set relativenumber
-
+set showcmd
+"Turn on plugins
+set multiple-cursors
+set surround
+set commentary
+"maps
+" Exit insert mode.
 inoremap jk <Esc>
 inoremap kj <Esc>
-
-nmap ,tt :action MoveEditorToOppositeTabGroup<CR>
-namp ,nt :action SelectInProjectView<CR>
+" Insert blank line on top.
+nmap ,o o<Esc>k
+" Insert blank line on bottom.
+nmap ,O O<Esc>j
+" Return to last cursor position.
+nmap ,. `.
+"Idea custom maps
+" Next Splitter
+nmap <C-L> :action NextSplitter<CR>
+" Previous Splitter
+nmap <C-H> :action PrevSplitter<CR>
+" Move tab opossite split.
+nmap ,tm :action MoveEditorToOppositeTabGroup<CR>
+" Expand folding recursively.
+nmap zr :action ExpandRegionRecursively<CR>
+" Collapse folding recursively.
+nmap zm :action CollapseRegionRecursively<CR>
+" Open nerd tree and focus file.
+nmap ,si :action SelectInProjectView<CR>
+" Reformat code.
+nmap ,l :action ReformatCode<CR>
+"Toggle Status bar
+nmap ,sb :action ViewStatusBar<CR>
+"Toggle navigation bar
+nmap ,nb :action ViewNavigationBar<CR>
+"Emulate vim C-p
+nmap <C-p> :action GotoFile<CR>
+"open commits window
+nmap ,c :action CheckinProject<CR>
